@@ -1,0 +1,250 @@
+/* ---------- Shell ---------- */
+.shell { min-height: 100dvh; display: grid; grid-template-rows: auto 1fr; }
+
+.topbar {
+  min-height: var(--topbar-h);
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.6rem clamp(1rem, 3vw, 2rem);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.brand { font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+.topbar .repo-form { flex: 1; max-width: 40rem; margin-left: auto; }
+
+/* ---------- Forms and buttons ---------- */
+.repo-form { display: flex; gap: 0.5rem; }
+
+.field {
+  flex: 1; min-width: 0;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+}
+.field::placeholder { color: var(--faint); }
+.field:hover { border-color: color-mix(in oklab, var(--line) 60%, var(--ink)); }
+.field:focus-visible {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ink) 15%, transparent);
+}
+
+.btn {
+  padding: 0.65rem 1.15rem;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.btn:hover:not(:disabled) { background: color-mix(in oklab, var(--ink) 82%, var(--paper)); }
+.btn:disabled {
+  background: var(--line);
+  color: var(--faint);
+  cursor: not-allowed;
+}
+.chip {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: var(--step--1);
+  transition: background 0.15s;
+}
+.chip:hover { background: var(--sunken); }
+
+.ghost {
+  padding: 0.2rem 0.6rem;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+.ghost:hover { background: var(--sunken); }
+
+.muted { color: var(--faint); font-size: var(--step--1); }
+
+
+
+/* ---------- Workspace ---------- */
+.workspace { display: grid; grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); }
+
+.rail {
+  position: sticky; top: 0; align-self: start;
+  height: calc(100dvh - var(--topbar-h));
+  overflow: auto;
+  padding: 1rem;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+}
+.rail-head {
+  display: grid; gap: 0.15rem;
+  padding-bottom: 0.9rem; margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+.rail-head strong { overflow-wrap: anywhere; }
+.rail-head span { color: var(--faint); font-size: var(--step--1); }
+.legend { margin-top: 0.9rem; }
+
+.stage {
+  width: 100%; max-width: 62rem; margin-inline: auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  display: grid; gap: 1.25rem; align-content: start;
+}
+
+.tabs { display: flex; gap: 0.25rem; border-bottom: 1px solid var(--line); }
+.tab {
+  margin-bottom: -1px;
+  padding: 0.6rem 0.9rem;
+  border: 0; border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ink-soft); font-weight: 500;
+}
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+.panel-stack { display: grid; gap: 1rem; }
+.asked { font-size: var(--step-1); }
+.answer { max-width: 68ch; font-size: 1.1rem; line-height: 1.6; }
+.evidence-head { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 0.5rem; }
+.evidence-head h3 { font-size: 1.05rem; }
+
+/* ---------- File tree ---------- */
+.tree { list-style: none; margin: 0; padding: 0; font-family: var(--font-code); font-size: 0.82rem; }
+.tree .tree { margin-left: 0.5rem; padding-left: 0.9rem; border-left: 1px solid var(--line); }
+.tree summary {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.18rem 0.3rem; border-radius: 6px;
+  list-style: none; cursor: pointer;
+}
+.tree summary::-webkit-details-marker { display: none; }
+.tree summary::before {
+  content: ""; flex: none;
+  width: 0.4rem; height: 0.4rem;
+  border-right: 1.5px solid var(--faint); border-bottom: 1.5px solid var(--faint);
+  rotate: -45deg; transition: rotate 0.15s;
+}
+.tree details[open] > summary::before { rotate: 45deg; }
+.tree summary:hover { background: var(--sunken); }
+.tree .file { position: relative; padding: 0.18rem 0.3rem 0.18rem 1.15rem; color: var(--ink-soft); overflow-wrap: anywhere; }
+.tree .file.read { color: var(--ink); font-weight: 500; }
+.tree .file.read::before {
+  content: ""; position: absolute; left: 0.25rem; top: 50%;
+  width: 0.42rem; height: 0.42rem; margin-top: -0.21rem;
+  border-radius: 50%; background: var(--verified);
+}
+
+/* ---------- Citation (the memorable part) ---------- */
+.citation {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  overflow: clip;
+}
+.citation-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.path { font-family: var(--font-code); font-size: var(--step--1); font-weight: 500; overflow-wrap: anywhere; }
+.range { color: var(--faint); font-size: var(--step--1); }
+.verified {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  margin-left: auto;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--verified-wash); color: var(--verified);
+  font-size: var(--step--1); font-weight: 600;
+  animation: stamp 0.4s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.why { padding: 0.75rem 1rem 0; color: var(--ink-soft); font-size: var(--step--1); }
+
+.code {
+  margin: 0.75rem 0 0; padding: 0.9rem 0;
+  overflow: auto;
+  background: var(--sunken);
+  border-left: 3px solid var(--verified); /* marks these exact lines as verified */
+  font-family: var(--font-code); font-size: 0.82rem; line-height: 1.65; tab-size: 2;
+}
+.code code { display: block; min-width: max-content; counter-reset: line calc(var(--start) - 1); }
+.line { display: block; padding-right: 1rem; counter-increment: line; }
+.line::before {
+  content: counter(line);
+  display: inline-block; width: 3.5rem; padding-right: 1rem;
+  text-align: right; color: var(--faint); user-select: none;
+}
+
+/* ---------- Feedback states ---------- */
+.skeleton { display: grid; gap: 0.7rem; }
+.skeleton i {
+  display: block; height: 0.9rem; border-radius: 6px;
+  background: linear-gradient(90deg, var(--sunken) 25%, color-mix(in oklab, var(--sunken) 55%, var(--surface)) 50%, var(--sunken) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+.skeleton i:nth-of-type(1) { width: 92%; }
+.skeleton i:nth-of-type(2) { width: 78%; }
+.skeleton i:nth-of-type(3) { width: 54%; }
+
+.error {
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in oklab, var(--danger) 40%, var(--line));
+  border-radius: var(--radius-control);
+  background: var(--danger-wash);
+}
+.error strong { color: var(--danger); }
+
+.diagram {
+  overflow: auto; padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+}
+.diagram svg { max-width: 100%; height: auto; }
+
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes stamp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 800px) {
+  .topbar { flex-wrap: wrap; }
+  .topbar .repo-form { flex-basis: 100%; max-width: none; margin-left: 0; }
+  .workspace { grid-template-columns: 1fr; }
+  .rail { position: static; height: auto; max-height: 16rem; border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+/* ---------- Landing ---------- */
+.hero {
+  width: min(100% - 2rem, 74rem);
+  margin-inline: auto;
+  padding-block: clamp(3rem, 12vh, 7rem) 3rem;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  align-content: start;   /* stops the hero from centering itself in the whole window */
+}
+.hero-copy { display: grid; gap: 1.25rem; align-content: start; }
+.hero h1 { font-size: clamp(1.9rem, 1.2rem + 2vw, 2.7rem); max-width: 22ch; }
+.lead { color: var(--ink-soft); font-size: var(--step-1); max-width: 46ch; }
+.hero .repo-form { max-width: 36rem; }
+.hero .field, .hero .btn { padding-block: 0.85rem; }
+.sample { display: grid; gap: 0.6rem; }
+
+/* On wide screens, the headline sits beside the sample citation */
+@media (min-width: 1000px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; }
+}
+
+.inline-code {
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+  background: var(--sunken);
+  font-family: var(--font-code);
+  font-size: 0.88em;
+}
+.btn.secondary { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.secondary:hover:not(:disabled) { background: var(--sunken); }
+.btn.secondary:disabled { background: transparent; color: var(--faint); }

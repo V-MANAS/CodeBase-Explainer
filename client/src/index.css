@@ -1,0 +1,62 @@
+:root {
+  /* Tells the browser we support both themes, which enables light-dark() below */
+  color-scheme: light dark;
+
+  --topbar-h: 3.75rem;
+
+  /* Color tokens: every color in the app comes from here */
+  --paper: light-dark(#f5f6f8, #0f1623);
+  --surface: light-dark(#ffffff, #151d2c);
+  --sunken: light-dark(#eceef2, #0c121d);
+  --ink: light-dark(#18202e, #e8edf6);
+  --ink-soft: light-dark(#4b566a, #aab4c6);
+  --faint: light-dark(#7d8798, #6f7b90);
+  --line: light-dark(#dde1e8, #26324a);
+  --verified: light-dark(#0b7a5a, #3ecf9f);
+  --verified-wash: color-mix(in oklab, var(--verified) 12%, var(--surface));
+  --danger: light-dark(#b3261e, #ff8a80);
+  --danger-wash: color-mix(in oklab, var(--danger) 10%, var(--surface));
+
+  /* Type */
+  --font-ui: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-code: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.15vw, 1.0625rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+
+  /* Shape: two radii only */
+  --radius-control: 8px;
+  --radius-panel: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

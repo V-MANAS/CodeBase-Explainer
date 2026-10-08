@@ -1,0 +1,24 @@
+[
+  { "repo": "expressjs/express", "question": "Where is the app object created?", "expectedFiles": ["lib/express.js"] },
+  { "repo": "expressjs/express", "question": "How does routing work?", "expectedFiles": ["lib/application.js", "lib/express.js"] },
+  { "repo": "expressjs/express", "question": "How are errors handled?", "expectedFiles": ["lib/application.js"] },
+  { "repo": "expressjs/express", "question": "How does res.send work?", "expectedFiles": ["lib/response.js"] },
+  { "repo": "expressjs/express", "question": "How does req get helper properties like req.ip?", "expectedFiles": ["lib/request.js"] },
+  { "repo": "expressjs/express", "question": "How does the view engine render templates?", "expectedFiles": ["lib/view.js", "lib/application.js"] },
+  { "repo": "koajs/koa", "question": "Where is the Koa application class defined?", "expectedFiles": ["lib/application.js"] },
+  { "repo": "koajs/koa", "question": "How does the ctx object get created?", "expectedFiles": ["lib/application.js", "lib/context.js"] },
+  { "repo": "expressjs/express", "question": "How does app.listen start the server?", "expectedFiles": ["lib/application.js"] },
+  { "repo": "expressjs/express", "question": "How does res.redirect work?", "expectedFiles": ["lib/response.js"] },
+  { "repo": "expressjs/express", "question": "How does app.use mount a sub-application?", "expectedFiles": ["lib/application.js"] },
+
+  { "repo": "koajs/koa", "question": "How does ctx.throw create an error?", "expectedFiles": ["lib/context.js"] },
+  { "repo": "koajs/koa", "question": "How does Koa handle errors thrown inside middleware?", "expectedFiles": ["lib/application.js", "lib/context.js"] },
+
+  { "repo": "axios/axios", "question": "How do request and response interceptors run?", "expectedFiles": ["lib/core/Axios.js", "lib/core/InterceptorManager.js"] },
+  { "repo": "axios/axios", "question": "Where is the browser XMLHttpRequest sent?", "expectedFiles": ["lib/adapters/xhr.js"] },
+  { "repo": "axios/axios", "question": "How is a request timeout enforced?", "expectedFiles": ["lib/adapters/xhr.js", "lib/adapters/http.js"] },
+  { "repo": "axios/axios", "question": "How are default config values merged with per-request config?", "expectedFiles": ["lib/core/mergeConfig.js"] },
+
+  { "repo": "fastify/fastify", "question": "How does a route get registered?", "expectedFiles": ["lib/route.js"] },
+  { "repo": "fastify/fastify", "question": "How do lifecycle hooks like onRequest run?", "expectedFiles": ["lib/hooks.js"] }
+]

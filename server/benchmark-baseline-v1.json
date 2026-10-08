@@ -1,0 +1,81 @@
+{
+  "summary": {
+    "date": "2026-10-08T13:19:31.581Z",
+    "model": "gemini-3.5-flash-lite",
+    "questions": 8,
+    "runsPerQuestion": 3,
+    "successfulRuns": 24,
+    "failedRuns": 0,
+    "filePickAccuracy": "100%",
+    "citedFileAccuracy": "100%",
+    "citationValidity": "100%",
+    "stableQuestions": "8/8",
+    "avgSeconds": "8.7"
+  },
+  "rows": [
+    {
+      "repo": "expressjs/express",
+      "question": "Where is the app object created?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "expressjs/express",
+      "question": "How does routing work?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "expressjs/express",
+      "question": "How are errors handled?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "expressjs/express",
+      "question": "How does res.send work?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "expressjs/express",
+      "question": "How does req get helper properties like req.ip?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "expressjs/express",
+      "question": "How does the view engine render templates?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "koajs/koa",
+      "question": "Where is the Koa application class defined?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    },
+    {
+      "repo": "koajs/koa",
+      "question": "How does the ctx object get created?",
+      "runs": 3,
+      "picked": 3,
+      "cited": 3,
+      "failed": 0
+    }
+  ]
+}
