@@ -1,6 +1,7 @@
 const API =
   import.meta.env.VITE_API_URL || "http://localhost:3001";
   
+  
 async function post(path, body) {
   const res = await fetch(`${API}${path}`, {
     method: "POST",
