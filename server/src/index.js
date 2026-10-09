@@ -12,8 +12,16 @@ app.set("trust proxy", 1);
 const CLIENT_ORIGIN =
   process.env.CLIENT_ORIGIN || "http://localhost:5173";
 
-app.use(cors({ origin: CLIENT_ORIGIN }));
-// WHAT: parse JSON request bodies into req.body.
+const allowedOrigins = [
+  CLIENT_ORIGIN,
+  "https://code-base-explainer-livid.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);// WHAT: parse JSON request bodies into req.body.
 // WHY: the frontend sends { repoUrl, question } as JSON; without this, req.body is undefined.
 app.use(express.json());
 
